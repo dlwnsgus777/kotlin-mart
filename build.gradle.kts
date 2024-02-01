@@ -71,7 +71,7 @@ tasks {
   }
   register<Copy>("copyDocs") {
     dependsOn(asciidoctor)
-    from("${asciidoctor.get().outputDir}/index.html")
+    from("build/docs/asciidoc")
     into("src/main/resources/static/docs")
   }
   bootJar {

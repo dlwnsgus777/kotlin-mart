@@ -17,7 +17,7 @@ class TestControllerRestDocsTest : RestDocsTest() {
         status().isOk
       }
       .andDo {
-        handle()
+        document("test-rest-doc-test-get")
       }
   }
 }
