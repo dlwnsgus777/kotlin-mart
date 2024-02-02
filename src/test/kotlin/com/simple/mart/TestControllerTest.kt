@@ -7,7 +7,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(TestController::class)
-class TestControllerRestDocsTest : RestDocsTest() {
+class TestControllerTest : RestDocsTest() {
 
   @Test
   fun testRestDoc() {

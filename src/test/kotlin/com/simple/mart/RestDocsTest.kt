@@ -2,11 +2,13 @@ package com.simple.mart
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration
+import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler
 import org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
@@ -18,7 +20,7 @@ import org.springframework.web.filter.CharacterEncodingFilter
 
 @AutoConfigureRestDocs
 @ExtendWith(RestDocumentationExtension::class)
-abstract class RestDocsTest {
+abstract class RestDocsTest{
 
   lateinit var mockMvc: MockMvc
 
@@ -31,7 +33,7 @@ abstract class RestDocsTest {
       .addFilter<DefaultMockMvcBuilder>(CharacterEncodingFilter("UTF-8", true))
       .alwaysDo<DefaultMockMvcBuilder>(MockMvcResultHandlers.print())
       .apply<DefaultMockMvcBuilder>(
-        MockMvcRestDocumentation.documentationConfiguration(
+        documentationConfiguration(
           restDocumentationContextProvider
         ).operationPreprocessors()
           .withRequestDefaults(prettyPrint())
