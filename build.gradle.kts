@@ -45,6 +45,7 @@ dependencies {
 }
 
 // docs 설정 : https://velog.io/@chaerim1001/Spring-Rest-Docs-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-AsciiDoc-%EB%AC%B8%EB%B2%95  참고
+// https://velog.io/@backtony/Spring-REST-Docs-%EC%A0%81%EC%9A%A9-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0 참고
 
 tasks {
   withType<KotlinCompile> {
