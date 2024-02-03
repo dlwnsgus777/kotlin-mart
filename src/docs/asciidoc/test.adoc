@@ -1,2 +1,3 @@
 == TestController
-operation::test-rest-doc-test-get[snippets="http-request,http-response"]
+
+operation::test-controller-test/test-rest-doc[snippets="http-request,http-response"]

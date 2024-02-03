@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
+import org.springframework.context.annotation.Import
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
@@ -20,9 +21,13 @@ import org.springframework.web.filter.CharacterEncodingFilter
 
 @AutoConfigureRestDocs
 @ExtendWith(RestDocumentationExtension::class)
+@Import(RestDocsConfiguration::class)
 abstract class RestDocsTest{
 
   lateinit var mockMvc: MockMvc
+
+  @Autowired
+  lateinit var restDocumentationResultHandler: RestDocumentationResultHandler
 
   @BeforeEach
   fun setUp(
@@ -31,7 +36,7 @@ abstract class RestDocsTest{
   ) {
     mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
       .addFilter<DefaultMockMvcBuilder>(CharacterEncodingFilter("UTF-8", true))
-      .alwaysDo<DefaultMockMvcBuilder>(MockMvcResultHandlers.print())
+      .alwaysDo<DefaultMockMvcBuilder>(restDocumentationResultHandler)
       .apply<DefaultMockMvcBuilder>(
         documentationConfiguration(
           restDocumentationContextProvider

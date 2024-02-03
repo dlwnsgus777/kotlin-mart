@@ -64,15 +64,15 @@ tasks {
   }
 
   asciidoctor {
-    inputs.dir(snippetsDir)
-    configurations("asciidoctorExt")
     dependsOn(test)
+    configurations("asciidoctorExt")
+    inputs.dir(snippetsDir)
     baseDirFollowsSourceFile()
   }
 
   register<Copy>("copyDocs") {
     dependsOn(asciidoctor)
-    from("build/docs/asciidoc")
+    from("${asciidoctor.get().outputDir}/index.html")
     into("src/main/resources/static/docs")
   }
 
