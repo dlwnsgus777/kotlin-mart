@@ -1,5 +1,6 @@
 package com.simple.mart
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,6 +29,9 @@ abstract class RestDocsTest{
 
   @Autowired
   lateinit var restDocumentationResultHandler: RestDocumentationResultHandler
+
+  @Autowired
+  lateinit var objectMapper: ObjectMapper
 
   @BeforeEach
   fun setUp(
