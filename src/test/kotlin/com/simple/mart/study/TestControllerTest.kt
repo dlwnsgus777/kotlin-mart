@@ -1,5 +1,7 @@
-package com.simple.mart
+package com.simple.mart.study
 
+import com.simple.mart.RestDocsTest
+import com.simple.mart.TestController
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document

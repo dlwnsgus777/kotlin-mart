@@ -32,16 +32,26 @@ val snippetsDir by extra { "build/generated-snippets" }
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-web")
+
+  /**
+   * 데이터 베이스 관련
+   */
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-  implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-  implementation("org.jetbrains.kotlin:kotlin-reflect")
   runtimeOnly("com.h2database:h2")
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
+
   /**
    * Rest Docs 설정
    */
   asciidoctorExt("org.springframework.restdocs:spring-restdocs-asciidoctor")
   testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+
+  /**
+   * 테스트 관련
+   */
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+  implementation("org.jetbrains.kotlin:kotlin-reflect")
 }
 
 // docs 설정 : https://velog.io/@chaerim1001/Spring-Rest-Docs-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-AsciiDoc-%EB%AC%B8%EB%B2%95  참고
